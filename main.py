@@ -81,8 +81,14 @@ if __name__ == '__main__':
             day_card_create = int(input('Для какого по номеру дня сделать открытку?'))
             day_card_name_file = input('Название файла для сохранения?:')
             img_create = Images()
-            img = img_create.create_image_weather(weather.weather_dict[day_card_create-1])
+            try:
+                img = img_create.create_image_weather(weather.weather_dict[day_card_create-1])
+            except IndexError:
+                print('Вы ввели не верный номер дня, или не создали список погоды.')
+                continue
             cv2.imwrite(f'img/day_card/{day_card_name_file}.png', img)
+        else:
+            print('Выберите верный пункт!!!')
 
 
 

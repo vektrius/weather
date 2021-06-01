@@ -30,8 +30,9 @@ class Weather:
 
     def take_weather_n_day(self,start_day,end_day):
         self.weather_dict.clear()
-        if start_day < 0 or end_day > 31:
-            raise IndexError('The beginning of the period can not be less than 0, and more than 31')
+        if start_day <= 0 or end_day > 31:
+            print('Число должно быть больше 0 и меньше 32')
+            return
 
         for i in range(start_day, end_day):
             temperature_day_celsies = re.search(re_day, self.temperature_morning[i].text)
